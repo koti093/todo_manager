@@ -6,7 +6,7 @@
       <input class="AddTodo-date" type="date">
       <input class="AddTodo-button" type="button" value="Add">
     </section>
-	
+
     <%= render partial:"todo-section", locals: {
       section_title: "Overdue",
       todos: @todos.overdue.complete,
