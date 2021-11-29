@@ -1,11 +1,11 @@
 <main class="TodoPgeMain">
   <article>
     <h1 class="TodoPage-title"> My Todo-List</h1>
-    <section class="AddTodo">
-      <input class="AddTodo-text" type="text" placeholder="what's next?">
-      <input class="AddTodo-date" type="date">
-      <input class="AddTodo-button" type="button" value="Add">
-    </section>
+    <%= form_with(url: "/todos",method:"post",class: "AddTodo") do %>
+      <%= text_field_tag 'todo_text', nil, placeholder:"what is next?", class:"AddTodo-text" %>
+      <%= date_field :due_date, :"" , class:"AddTodo-date" %>
+      <%= submit_tag 'Add', class:"AddTodo-button" %>
+    <% end %>
 
     <%= render partial:"todo-section", locals: {
       section_title: "Overdue",
