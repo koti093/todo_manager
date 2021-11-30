@@ -1,6 +1,7 @@
 <main class="TodoPgeMain">
   <article>
     <h1 class="TodoPage-title"> My Todo-List</h1>
+
     <%= form_with(url: "/todos",method:"post",class: "AddTodo") do %>
       <%= text_field_tag 'todo_text', nil, placeholder:"what is next?", class:"AddTodo-text" %>
       <%= date_field :due_date, :"" , class:"AddTodo-date" %>
@@ -24,5 +25,6 @@
       todos: @todos.duelater,
       show_due_date:true
     } %>
+
   </article>
 </main>

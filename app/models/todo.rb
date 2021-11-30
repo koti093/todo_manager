@@ -1,12 +1,15 @@
 class Todo < ActiveRecord::Base
-  def due_today?
-    due_date == Date.today
-  end
+  validates :todo_text, presence: true
+  validates :todo_text, length: { minimum:2 }
+  validates :due_date, presence: true
+  belongs_to :user
 
   def due_today?
     due_date == Date.today
   end
-
+  def self.current_user
+    all.where(user_id:user.id)
+  end
   def self.overdue
     where("due_date < ?", Date.today)
   end
@@ -39,4 +42,5 @@ class Todo < ActiveRecord::Base
     todo.save
     todo
   end
+
 end

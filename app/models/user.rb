@@ -1,5 +1,7 @@
-class User < ActiveRecord::Base
-  def to_pleasant_string
-    "#{id} #{name} #{email} #{password}"
-  end
+class User < ApplicationRecord
+  validates :first_name, presence: true
+  validates :first_name, length: { minimum:2 }
+  validates :email, presence: true
+  has_secure_password
+  has_many :todos
 end
